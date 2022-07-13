@@ -10,7 +10,6 @@ int aleatorio(int tam){
 
 void gerarMatriz(matriz m){
     int count = 0,linha,coluna;
-    matriz m;
     for(int i = 0; i < 10;i++){
         for(int j = 0;j < 20;j++)
         m.mat[i][j] = 0;
@@ -27,7 +26,7 @@ void gerarMatriz(matriz m){
 
 int main(){
     matriz m;
-    m.mat[0][0] = {0};
+    gerarMatriz(m);
     printf("%d\n",m.mat[0][0]);
 
     return 0;
