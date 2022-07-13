@@ -4,15 +4,14 @@
 #include "matriz.h"
 
 int aleatorio(int tam){
-  srand(time(NULL));
-  return (rand() % tam) + 1;
+  return (rand() % tam);
 }
 
 void gerarMatriz(matriz m){
     int count = 0,linha,coluna;
     for(int i = 0; i < 10;i++){
         for(int j = 0;j < 20;j++)
-        m.mat[i][j] = 0;
+            m.mat[i][j] = 0;
     }
     while(count < 40){
         linha =  aleatorio(10);
@@ -25,6 +24,7 @@ void gerarMatriz(matriz m){
 }
 
 int main(){
+    srand(time(NULL));
     matriz m;
     gerarMatriz(m);
     printf("%d\n",m.mat[0][0]);
