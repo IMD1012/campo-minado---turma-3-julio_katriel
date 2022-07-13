@@ -8,7 +8,7 @@ int aleatorio(int tam){
   return (rand() % tam) + 1;
 }
 
-void gerarMatriz(matriz m[10][20]){
+void gerarMatriz(matriz m){
     int count = 0,linha,coluna;
     matriz m;
     for(int i = 0; i < 10;i++){
@@ -18,7 +18,10 @@ void gerarMatriz(matriz m[10][20]){
     while(count < 40){
         linha =  aleatorio(10);
         coluna = aleatorio(20);
-        if(m.mat[linha][coluna])
+        if(m.mat[linha][coluna] == 0){
+            count++;
+            m.mat[linha][coluna] = 9;
+        }
     }
 }
 
