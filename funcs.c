@@ -15,3 +15,9 @@ void como_jogar(){
     printf("Para ver o tempo de jogo digite: t\n");
     printf("Para pedir ajudar do computador digite: h\n");
 }
+
+void fim_de_jogo(){
+    printf("---------------------------------------------------------\n");
+    printf("                        GAME OVER                        \n");
+    printf("---------------------------------------------------------\n");
+}
