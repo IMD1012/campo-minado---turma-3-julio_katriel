@@ -6,7 +6,7 @@
 int aleatorio(int tam);
 void gerarMatriz(matriz *m);
 int coordenada_valida(int l, int c);
-int verifica_vizinho(int l, int c, matriz *m);
+int verifica_vizinho(int l, int c, matriz m);
 
 int main(){
     srand(time(NULL));
@@ -51,31 +51,31 @@ int coordenada_valida(int l, int c){
   }
 }
 
-int verifica_vizinho(int l, int c, matriz *m){
+int verifica_vizinho(int l, int c, matriz m){
   int quant = 0;
 
-  if(coordenada_valida(l-1,c-1) && m->mat[l-1][c-1] == 9){
+  if(coordenada_valida(l-1,c-1) && m.mat[l-1][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l-1,c) && m->mat[l-1][c-1] == 9){
+  if(coordenada_valida(l-1,c) && m.mat[l-1][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l-1,c+1) && m->mat[l-1][c-1] == 9){
+  if(coordenada_valida(l-1,c+1) && m.mat[l-1][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l,c-1) && m->mat[l-1][c-1] == 9){
+  if(coordenada_valida(l,c-1) && m.mat[l-1][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l,c+1) && m->mat[l-1][c-1] == 9){
+  if(coordenada_valida(l,c+1) && m.mat[l-1][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l+1,c-1) && m->mat[l-1][c-1] == 9){
+  if(coordenada_valida(l+1,c-1) && m.mat[l-1][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l+1,c) && m->mat[l-1][c-1] == 9){
+  if(coordenada_valida(l+1,c) && m.mat[l-1][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l+1,c+1) && m->mat[l-1][c-1] == 9){
+  if(coordenada_valida(l+1,c+1) && m.mat[l-1][c-1] == 9){
     quant++;
   }
 
