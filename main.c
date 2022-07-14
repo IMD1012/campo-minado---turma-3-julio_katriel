@@ -3,6 +3,22 @@
 #include <time.h>
 #include "matriz.h"
 
+int aleatorio(int tam);
+void gerarMatriz(matriz *m);
+
+int main(){
+    srand(time(NULL));
+    matriz m;
+    gerarMatriz(&m);
+    for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 20;j++)
+            printf("%d ",m.mat[i][j]);
+        printf("\n");
+    }
+
+    return 0;
+}
+
 int aleatorio(int tam){
   return (rand() % tam);
 }
@@ -21,17 +37,4 @@ void gerarMatriz(matriz *m){
             m->mat[linha][coluna] = 9;
         }
     }
-}
-
-int main(){
-    srand(time(NULL));
-    matriz m;
-    gerarMatriz(&m);
-    for(int i = 0; i < 10; i++){
-        for(int j = 0; j < 20;j++)
-            printf("%d ",m.mat[i][j]);
-        printf("\n");
-    }
-
-    return 0;
 }
