@@ -1,11 +1,17 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include "matriz.h"
 
-void mostrar_tela(matriz m){
-    printf("---------------------------------------------------------\n");
-    printf("                      CAMPO MINADO                       \n");
-    printf("---------------------------------------------------------\n");
+int aleatorio(int tam){
+  return (rand() % tam);
+}
+
+int coordenada_valida(int l, int c){
+  if((l >= 0 && l < 10) && (c >= 0 && c < 20)){
+    return 1;
+  }
+  else{
+    return 0;
+  }
 }
 
 void como_jogar(){
