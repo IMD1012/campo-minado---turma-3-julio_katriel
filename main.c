@@ -12,7 +12,7 @@ int main(){
     srand(time(NULL));
     matriz m;
     gerarMatriz(&m);
-    verifica_vizinho(10,20);
+    verifica_vizinho(10,20,m);
     /*for(int i = 0; i < 10; i++){
         for(int j = 0; j < 20;j++)
             printf("%d ",m.mat[i][j]);
