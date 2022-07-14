@@ -6,13 +6,13 @@
 int aleatorio(int tam);
 void gerarMatriz(matriz *m);
 int coordenada_valida(int l, int c);
-int verifica_vizinho(int l, int c);
+int verifica_vizinho(int l, int c, matriz *m);
 
 int main(){
     srand(time(NULL));
     matriz m;
     gerarMatriz(&m);
-    verifica_vizinho(0,0);
+    verifica_vizinho(10,20);
     /*for(int i = 0; i < 10; i++){
         for(int j = 0; j < 20;j++)
             printf("%d ",m.mat[i][j]);
@@ -43,7 +43,7 @@ void gerarMatriz(matriz *m){
 }
 
 int coordenada_valida(int l, int c){
-  if(l >= 0 && l < 10 && c >= 0 && c < 20){
+  if((l >= 0 && l < 10) && (c >= 0 && c < 20)){
     return 1;
   }
   else{
@@ -51,13 +51,33 @@ int coordenada_valida(int l, int c){
   }
 }
 
-int verifica_vizinho(int l, int c){
+int verifica_vizinho(int l, int c, matriz *m){
   int quant = 0;
 
-  if(coordenada_valida(l-1,c-1)){
-      printf("valido");
+  if(coordenada_valida(l-1,c-1) && m->mat[l-1][c-1] == 9){
+    quant++;
   }
-  else{
-    printf("não válido");
+  if(coordenada_valida(l-1,c) && m->mat[l-1][c-1] == 9){
+    quant++;
   }
+  if(coordenada_valida(l-1,c+1) && m->mat[l-1][c-1] == 9){
+    quant++;
+  }
+  if(coordenada_valida(l,c-1) && m->mat[l-1][c-1] == 9){
+    quant++;
+  }
+  if(coordenada_valida(l,c+1) && m->mat[l-1][c-1] == 9){
+    quant++;
+  }
+  if(coordenada_valida(l+1,c-1) && m->mat[l-1][c-1] == 9){
+    quant++;
+  }
+  if(coordenada_valida(l+1,c) && m->mat[l-1][c-1] == 9){
+    quant++;
+  }
+  if(coordenada_valida(l+1,c+1) && m->mat[l-1][c-1] == 9){
+    quant++;
+  }
+
+  return quant;
 }
