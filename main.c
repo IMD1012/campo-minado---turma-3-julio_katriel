@@ -12,12 +12,15 @@ int main(){
     srand(time(NULL));
     matriz m;
     gerarMatriz(&m);
-    verifica_vizinho(10,20,m);
-    /*for(int i = 0; i < 10; i++){
+    for(int i = 0; i < 10; i++){
         for(int j = 0; j < 20;j++)
             printf("%d ",m.mat[i][j]);
         printf("\n");
-    }*/
+    }
+
+    int l,c;
+    scanf("%d %d",&l,&c);
+    printf("%d",verifica_vizinho(l,c,m));
 
     return 0;
 }
@@ -57,25 +60,25 @@ int verifica_vizinho(int l, int c, matriz m){
   if(coordenada_valida(l-1,c-1) && m.mat[l-1][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l-1,c) && m.mat[l-1][c-1] == 9){
+  if(coordenada_valida(l-1,c) && m.mat[l-1][c] == 9){
     quant++;
   }
-  if(coordenada_valida(l-1,c+1) && m.mat[l-1][c-1] == 9){
+  if(coordenada_valida(l-1,c+1) && m.mat[l-1][c+1] == 9){
     quant++;
   }
-  if(coordenada_valida(l,c-1) && m.mat[l-1][c-1] == 9){
+  if(coordenada_valida(l,c-1) && m.mat[l][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l,c+1) && m.mat[l-1][c-1] == 9){
+  if(coordenada_valida(l,c+1) && m.mat[l][c+1] == 9){
     quant++;
   }
-  if(coordenada_valida(l+1,c-1) && m.mat[l-1][c-1] == 9){
+  if(coordenada_valida(l+1,c-1) && m.mat[l+1][c-1] == 9){
     quant++;
   }
-  if(coordenada_valida(l+1,c) && m.mat[l-1][c-1] == 9){
+  if(coordenada_valida(l+1,c) && m.mat[l+1][c] == 9){
     quant++;
   }
-  if(coordenada_valida(l+1,c+1) && m.mat[l-1][c-1] == 9){
+  if(coordenada_valida(l+1,c+1) && m.mat[l+1][c+1] == 9){
     quant++;
   }
 
