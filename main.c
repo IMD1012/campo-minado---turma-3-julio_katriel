@@ -5,16 +5,19 @@
 
 int aleatorio(int tam);
 void gerarMatriz(matriz *m);
+int coordenada_valida(int l, int c);
+int verifica_vizinho(int l, int c);
 
 int main(){
     srand(time(NULL));
     matriz m;
     gerarMatriz(&m);
-    for(int i = 0; i < 10; i++){
+    verifica_vizinho(0,0);
+    /*for(int i = 0; i < 10; i++){
         for(int j = 0; j < 20;j++)
             printf("%d ",m.mat[i][j]);
         printf("\n");
-    }
+    }*/
 
     return 0;
 }
@@ -37,4 +40,24 @@ void gerarMatriz(matriz *m){
             m->mat[linha][coluna] = 9;
         }
     }
+}
+
+int coordenada_valida(int l, int c){
+  if(l >= 0 && l < 10 && c >= 0 && c < 20){
+    return 1;
+  }
+  else{
+    return 0;
+  }
+}
+
+int verifica_vizinho(int l, int c){
+  int quant = 0;
+
+  if(coordenada_valida(l-1,c-1)){
+      printf("valido");
+  }
+  else{
+    printf("não válido");
+  }
 }
