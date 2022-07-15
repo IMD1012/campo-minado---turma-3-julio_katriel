@@ -61,6 +61,60 @@ int verifica_vizinho(int l, int c, matriz *m){
   return quant;
 }
 
+int verifica_aberto(int l, int c, matriz *m){
+  if(coordenada_valida(l,c)){
+    if(m->mat[l][c].bomba >= 0){
+      return 1;
+    }
+  }
+  else{
+    return 0;
+  }
+}
+
+
+int abre_vizinho(int l, int c, matriz *m){
+  int x;
+  x = verifica_vizinho(l,c,m);
+  for(int i = l-1; i < l+1; i++){
+    for(int j = c-1; j < c+1; j++){
+      if(coordenada_valida(i,j)){
+        m->mat[i][j].bomba = x;
+        if(verifica_vizinho(i,j,m)){
+          return abre_vizinho(i,j,m);
+        }
+      }  
+    }
+  }
+}
+
+int abre_celula(matriz m, matriz m2){
+  int count = 0;
+  do{
+      for(int i = 0; i < 10; i++){
+        for(int j = 0; j < 20;j++)
+            printf("%d ",m2.mat[i][j].bomba);
+        printf("\n");
+      }
+      int l,c;
+      scanf("%d %d",&l,&c);
+      if(m.mat[l][c].bomba == 9){
+        printf("Game Over");
+        break;
+      }
+      else{
+        int x;
+        x = verifica_vizinho(l,c,&m);
+        m2.mat[l][c].bomba = x;
+      }
+      
+      if(m2.mat[l][c].bomba == 0){
+        abre_vizinho(l,c,&m2);
+      }
+      count++;
+    }while(count != 160);
+}
+
 void mostrar_tela(matriz m){
     printf("---------------------------------------------------------\n");
     printf("                      CAMPO MINADO                       \n");
