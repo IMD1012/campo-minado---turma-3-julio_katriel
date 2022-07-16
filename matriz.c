@@ -64,6 +64,38 @@ int verifica_aberto(int l, int c, matriz *m){
   return (coordenada_valida(l,c) && (m->mat[l][c].visibilidade == 0));
 }
 
+int troca_numero_caracter(int x){
+  char y;
+  if(x == 1){
+    y = '1';
+  }
+  else if(x == 2){
+    y = '2';
+  }
+  else if(x == 3){
+    y = '3';
+  }
+  else if(x == 4){
+    y = '4';
+  }
+  else if(x == 5){
+    y = '5';
+  }
+  else if(x == 6){
+    y = '6';
+  }
+  else if(x == 7){
+    y = '7';
+  }
+  else if(x == 8){
+    y = '8';
+  }
+  else{
+    y = '0';
+  }
+
+  return y;
+}
 
 int abre_vizinho(int l, int c, matriz *m){
   int x;
@@ -72,35 +104,9 @@ int abre_vizinho(int l, int c, matriz *m){
   for(int i = l-1; i < l+1; i++){
     for(int j = c-1; j < c+1; j++){
       if(coordenada_valida(i,j)){
-        if(x == 1){
-          y = '1';
-        }
-        else if(x == 2){
-          y = '2';
-        }
-        else if(x == 3){
-          y = '3';
-        }
-        else if(x == 4){
-          y = '4';
-        }
-        else if(x == 5){
-          y = '5';
-        }
-        else if(x == 6){
-          y = '6';
-        }
-        else if(x == 7){
-          y = '7';
-        }
-        else if(x == 8){
-          y = '8';
-        }
-        else{
-          y = '0';
-        }
+        y = troca_numero_caracter(x);
         m->mat[i][j].caractere = y;
-        if(verifica_vizinho(i,j,m)){
+        if(verifica_vizinho(i,j,m) != 0){
           return abre_vizinho(i,j,m);
         }
       }  
@@ -108,21 +114,54 @@ int abre_vizinho(int l, int c, matriz *m){
   }
 }
 
+int ordena_menos_um(int l1){
+  int l2;
+  l2 = l1 - 1;
+  return l2;
+}
+
+char troca(char letra){
+  int numero;
+  int count = 0;
+  char alfabeto[20]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t'};
+
+  for(int i = 0; i < 20; i++){
+    count++;
+    if(alfabeto[i] == letra){
+      break;
+    }
+  }
+  numero = count - 1;
+  return numero;
+}
+
 int abre_celula(matriz m, matriz m2){
   int count = 0;
   do{
-    printf("------------------------------------------");
+    printf("  ------------------------------------------\n");
+    printf("    a b c d e f g h i j k l m n o p q r s t");
     printf("\n");
+    printf("  ------------------------------------------\n");
       for(int i = 0; i < 10; i++){
-        printf("|");
+        if(i + 1 != 10){
+          printf("0%d",i+1);
+        }
+        else{
+          printf("%d",i+1);
+        }
+        printf("| ");
         for(int j = 0; j < 20;j++)
             printf("%c ",m2.mat[i][j].caractere);
         printf("|");
         printf("\n");
       }
-    printf("------------------------------------------\n");
+    printf("  ------------------------------------------");
+    printf("\n");
       int l,c;
-      scanf("%d %d",&l,&c);
+      char c2;
+      scanf("%d %c",&l,&c2);
+      l = ordena_menos_um(l);
+      c = troca(c2);
       if(m.mat[l][c].caractere == '#'){
         printf("Game Over");
         break;
@@ -131,33 +170,7 @@ int abre_celula(matriz m, matriz m2){
         int x;
         char y;
         x = verifica_vizinho(l,c,&m);
-        if(x == 1){
-          y = '1';
-        }
-        else if(x == 2){
-          y = '2';
-        }
-        else if(x == 3){
-          y = '3';
-        }
-        else if(x == 4){
-          y = '4';
-        }
-        else if(x == 5){
-          y = '5';
-        }
-        else if(x == 6){
-          y = '6';
-        }
-        else if(x == 7){
-          y = '7';
-        }
-        else if(x == 8){
-          y = '8';
-        }
-        else{
-          y = '0';
-        }
+        y = troca_numero_caracter(x);
         m2.mat[l][c].caractere = y;
       }
       
