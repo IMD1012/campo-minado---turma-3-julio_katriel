@@ -120,8 +120,7 @@ int abre_celula(matriz m, matriz m2){
         printf("|");
         printf("\n");
       }
-    printf("------------------------------------------");
-    printf("\n");
+    printf("------------------------------------------\n");
       int l,c;
       scanf("%d %d",&l,&c);
       if(m.mat[l][c].caractere == '#'){

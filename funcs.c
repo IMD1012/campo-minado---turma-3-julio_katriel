@@ -6,12 +6,7 @@ int aleatorio(int tam){
 }
 
 int coordenada_valida(int l, int c){
-  if((l >= 0 && l < 10) && (c >= 0 && c < 20)){
-    return 1;
-  }
-  else{
-    return 0;
-  }
+  return ((l >= 0 && l < 10) && (c >= 0 && c < 20));
 }
 
 void como_jogar(){
