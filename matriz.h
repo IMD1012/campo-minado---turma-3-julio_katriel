@@ -3,8 +3,8 @@
 
 typedef struct {
     int visibilidade;
-    char bomba;
-    int bombas;
+    int bombas_perto;
+    char caractere;
 }celula;
 
 typedef struct{

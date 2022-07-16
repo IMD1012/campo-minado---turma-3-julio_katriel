@@ -11,7 +11,7 @@ int main(){
     colocar_bombas(&m);
     for(int i = 0; i < 10; i++){
         for(int j = 0; j < 20;j++)
-            printf("%d ",m.mat[i][j].bomba);
+            printf("%c ",m.mat[i][j].caractere);
         printf("\n");
     }
 
