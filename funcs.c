@@ -55,8 +55,8 @@ void como_jogar(matriz m, matriz m2){
 void tela_inicial(matriz m, matriz m2){
  int escolha;   
   printf("---------------------------------------------------------\n");
-    printf("                      CAMPO MINADO                       \n");
-    printf("---------------------------------------------------------\n");
+  printf("                      CAMPO MINADO                       \n");
+  printf("---------------------------------------------------------\n");
   printf("\n\n");
 
   printf("1 - jogar \n");
