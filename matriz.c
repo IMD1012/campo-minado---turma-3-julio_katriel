@@ -64,75 +64,19 @@ int verifica_aberto(int l, int c, matriz *m){
   return (coordenada_valida(l,c) && (m->mat[l][c].visibilidade == 0));
 }
 
-int troca_numero_caracter(int x){
-  char y;
-  if(x == 1){
-    y = '1';
-  }
-  else if(x == 2){
-    y = '2';
-  }
-  else if(x == 3){
-    y = '3';
-  }
-  else if(x == 4){
-    y = '4';
-  }
-  else if(x == 5){
-    y = '5';
-  }
-  else if(x == 6){
-    y = '6';
-  }
-  else if(x == 7){
-    y = '7';
-  }
-  else if(x == 8){
-    y = '8';
-  }
-  else{
-    y = '0';
-  }
-
-  return y;
-}
-
 int abre_vizinho(int l, int c, matriz *m){
   int x;
-  char y;
   x = verifica_vizinho(l,c,m);
   for(int i = l-1; i < l+1; i++){
     for(int j = c-1; j < c+1; j++){
       if(coordenada_valida(i,j)){
-        y = troca_numero_caracter(x);
-        m->mat[i][j].caractere = y;
+        m->mat[i][j].caractere = convert_char(x);
         if(verifica_vizinho(i,j,m) != 0){
           return abre_vizinho(i,j,m);
         }
       }  
     }
   }
-}
-
-int ordena_menos_um(int l1){
-  int l2;
-  l2 = l1 - 1;
-  return l2;
-}
-
-char troca(char letra){
-  int numero;
-  int count = 0;
-  char alfabeto[20]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t'};
-
-  for(int i = 0; i < 20; i++){
-    count++;
-    if(alfabeto[i] == letra){
-      break;
-    }
-  }
-  numero = count - 1;
-  return numero;
 }
 
 int abre_celula(matriz m, matriz m2){

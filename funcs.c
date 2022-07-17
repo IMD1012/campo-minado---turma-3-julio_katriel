@@ -10,6 +10,33 @@ int coordenada_valida(int l, int c){
   return ((l >= 0 && l < 10) && (c >= 0 && c < 20));
 }
 
+int ordena_menos_um(int l1){
+  int l2;
+  l2 = l1 - 1;
+  return l2;
+}
+
+int troca(char letra){
+  if(letra < 117)
+    return letra - 97;
+  else
+    return -1;
+}
+
+char convert_char(int n){
+  switch(n){
+    case 1: return '1';
+    case 2: return '2';
+    case 3: return '3';
+    case 4: return '4';
+    case 5: return '5';
+    case 6: return '6';
+    case 7: return '7';
+    case 8: return '8';
+    default: return '\0';
+  }
+}
+
 void como_jogar(matriz m, matriz m2){
   int escolha;
   printf("Digite uma letra no intervalor de A a J\n");
