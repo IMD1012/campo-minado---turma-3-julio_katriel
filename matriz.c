@@ -63,6 +63,7 @@ int verifica_vizinho(int l, int c, matriz *m){
 int verifica_aberto(int l, int c, matriz *m){
   return (coordenada_valida(l,c) && (m->mat[l][c].visibilidade == 0));
 }
+
 //Em produção
 int abre_vizinho(int l, int c, matriz *m){
   int x;
@@ -115,16 +116,6 @@ int abre_celula(matriz m, matriz m2){
         y = convert_char(x);
         m2.mat[l][c].caractere = y;
       }
-      
-      if(m2.mat[l][c].caractere == '0'){
-        abre_vizinho(l,c,&m2);
-      }
       count++;
     }while(count != 160);
-}
-
-void mostrar_tela(matriz m){
-    printf("---------------------------------------------------------\n");
-    printf("                      CAMPO MINADO                       \n");
-    printf("---------------------------------------------------------\n");
 }
