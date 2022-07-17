@@ -11,7 +11,8 @@ int main(){
     gerar_Matriz(&m);
     colocar_bombas(&m);
     gerar_Matriz(&m2);
-    // tela_inicial(m,m2);
+    
+    //tela_inicial(m,m2);
 
     return 0;
 }

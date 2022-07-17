@@ -85,19 +85,18 @@ int abre_celula(matriz m, matriz m2){
     printf("  ------------------------------------------\n");
     printf("    a b c d e f g h i j k l m n o p q r s t\n");
     printf("  ------------------------------------------\n");
-      for(int i = 0; i < 10; i++){
-        if(i + 1 != 10){
-          printf("0%d",i+1);
-        }
-        else{
-          printf("%d",i+1);
-        }
-        printf("| ");
-        for(int j = 0; j < 20;j++)
-            printf("%c ",m2.mat[i][j].caractere);
-        printf("|");
-        printf("\n");
+    for(int i = 0; i < 10; i++){
+      if(i + 1 != 10){
+        printf("0%d",i+1);
       }
+      else{
+        printf("%d",i+1);
+      }
+      printf("| ");
+      for(int j = 0; j < 20;j++)
+          printf("%c ",m2.mat[i][j].caractere);
+      printf("|\n");
+    }
     printf("  ------------------------------------------\n");
       int l,c;
       char c2;
@@ -121,10 +120,4 @@ int abre_celula(matriz m, matriz m2){
       }
       count++;
     }while(count != 160);
-}
-
-void mostrar_tela(matriz m){
-    printf("---------------------------------------------------------\n");
-    printf("                      CAMPO MINADO                       \n");
-    printf("---------------------------------------------------------\n");
 }

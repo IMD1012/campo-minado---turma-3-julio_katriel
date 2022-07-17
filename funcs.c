@@ -64,7 +64,7 @@ void tela_inicial(matriz m, matriz m2){
   printf("3 - modo autônomo \n");
 
   printf("Digite um número de 1 a 3 \n");
-  scanf("%d",&escolha);
+  scanf(" %d",&escolha);
 
   do{
     if(escolha == 1){
@@ -76,12 +76,12 @@ void tela_inicial(matriz m, matriz m2){
     else if(escolha == 3){
       printf("Função Indisponível \n");
       printf("Digite novamente \n");
-      scanf("%d",&escolha);
+      scanf(" %d",&escolha);
     }
     else{
       printf("Número inválido \n");
       printf("Digite novamente \n");
-      scanf("%d",&escolha);
+      scanf(" %d",&escolha);
     }
   }while(escolha > 2);
 }

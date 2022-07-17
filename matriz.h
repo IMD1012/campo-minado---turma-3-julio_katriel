@@ -15,6 +15,5 @@ void gerar_Matriz(matriz *m);
 void colocar_bombas(matriz *m);
 int verifica_vizinho(int l, int c, matriz *m);
 int abre_celula(matriz m, matriz m2);
-void mostrar_tela(matriz m);
 int aleatorio(int tam);
 #endif
