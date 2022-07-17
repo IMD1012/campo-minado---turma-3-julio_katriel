@@ -63,7 +63,7 @@ int verifica_vizinho(int l, int c, matriz *m){
 int verifica_aberto(int l, int c, matriz *m){
   return (coordenada_valida(l,c) && (m->mat[l][c].visibilidade == 0));
 }
-
+//Em produção
 int abre_vizinho(int l, int c, matriz *m){
   int x;
   x = verifica_vizinho(l,c,m);
@@ -83,8 +83,7 @@ int abre_celula(matriz m, matriz m2){
   int count = 0;
   do{
     printf("  ------------------------------------------\n");
-    printf("    a b c d e f g h i j k l m n o p q r s t");
-    printf("\n");
+    printf("    a b c d e f g h i j k l m n o p q r s t\n");
     printf("  ------------------------------------------\n");
       for(int i = 0; i < 10; i++){
         if(i + 1 != 10){
@@ -99,8 +98,7 @@ int abre_celula(matriz m, matriz m2){
         printf("|");
         printf("\n");
       }
-    printf("  ------------------------------------------");
-    printf("\n");
+    printf("  ------------------------------------------\n");
       int l,c;
       char c2;
       scanf("%d %c",&l,&c2);
