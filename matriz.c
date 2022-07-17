@@ -114,7 +114,7 @@ int abre_celula(matriz m, matriz m2){
         int x;
         char y;
         x = verifica_vizinho(l,c,&m);
-        y = troca_numero_caracter(x);
+        y = convert_char(x);
         m2.mat[l][c].caractere = y;
       }
       
