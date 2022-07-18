@@ -4,7 +4,7 @@
 #include "matriz.h"
 
 
-int trata_linha(char l1, matriz m){
+int trata_linha(char l1){
   int l2;
   l2 = l1 - 1;
   return l2;
@@ -51,11 +51,11 @@ void como_jogar(matriz m){
   printf("Digite 1 para jogar \n");
   scanf("%d\n",&escolha);
   if(escolha == 1){
-    abre_celula(m);
+    abre_celula(&m);
   }
 }
 
-void tela_inicial(matriz m){
+void tela_inicial(matriz *m){
  int escolha;   
   printf("---------------------------------------------------------\n");
   printf("                      CAMPO MINADO                       \n");
@@ -73,7 +73,7 @@ void tela_inicial(matriz m){
       abre_celula(m);
     }
     else if(escolha == 2){
-      como_jogar(m);
+      como_jogar(*m);
     }
     else if(escolha == 3){
       printf("Função Indisponível \n");

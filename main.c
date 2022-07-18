@@ -10,6 +10,6 @@ int main(){
     matriz m;
     gerar_Matriz(&m);
     colocar_bombas(&m);
-    tela_inicial(m);
+    tela_inicial(&m);
     return 0;
 }
