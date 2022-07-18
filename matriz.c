@@ -94,7 +94,7 @@ void abre_vizinho(int l, int c, matriz *m){
 
 void imprimir_matriz(matriz m){
   printf("  ------------------------------------------\n");
-  printf("    A B C D E F G H I K L M N O P Q R S T\n");
+  printf("    A B C D E F G H I J K L M N O P Q R S T\n");
   printf("  ------------------------------------------\n");
   for(int i = 0; i < 10;i++){
     printf("|");
