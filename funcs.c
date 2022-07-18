@@ -1,6 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 #include "matriz.h"
+
+
+int trata_linha(char l1, matriz m){
+  int l2;
+  l2 = l1 - 1;
+  return l2;
+}
 
 int aleatorio(int tam){
   return (rand() % tam);
@@ -10,13 +18,8 @@ int coordenada_valida(int l, int c){
   return ((l >= 0 && l < 10) && (c >= 0 && c < 20));
 }
 
-int ordena_menos_um(int l1){
-  int l2;
-  l2 = l1 - 1;
-  return l2;
-}
-
 int troca(char letra){
+  
   if(letra < 117)
     return letra - 97;
   else
@@ -25,6 +28,7 @@ int troca(char letra){
 
 char convert_char(int n){
   switch(n){
+    case 0: return '0';
     case 1: return '1';
     case 2: return '2';
     case 3: return '3';
@@ -37,7 +41,7 @@ char convert_char(int n){
   }
 }
 
-void como_jogar(matriz m, matriz m2){
+void como_jogar(matriz m){
   int escolha;
   printf("Digite um número no intervalor de 1 à 10\n");
   printf("Digite uma letra no intervalor de A a T\n");
@@ -47,11 +51,11 @@ void como_jogar(matriz m, matriz m2){
   printf("Digite 1 para jogar \n");
   scanf("%d\n",&escolha);
   if(escolha == 1){
-    abre_celula(m,m2);
+    abre_celula(m);
   }
 }
 
-void tela_inicial(matriz m, matriz m2){
+void tela_inicial(matriz m){
  int escolha;   
   printf("---------------------------------------------------------\n");
   printf("                      CAMPO MINADO                       \n");
@@ -66,10 +70,10 @@ void tela_inicial(matriz m, matriz m2){
 
   do{
     if(escolha == 1){
-      abre_celula(m,m2);
+      abre_celula(m);
     }
     else if(escolha == 2){
-      como_jogar(m,m2);
+      como_jogar(m);
     }
     else if(escolha == 3){
       printf("Função Indisponível \n");
