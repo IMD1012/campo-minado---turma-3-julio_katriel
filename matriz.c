@@ -75,7 +75,7 @@ void abre_vizinho(int l, int c, matriz *m){
     m->mat[l][c].visibilidade = 1;
   }
   else{
-    if(!verifica_aberto(l,c,m)){
+    if(!m->mat[l][c].visibilidade){
       m->mat[l][c].caractere = ' ';
       m->mat[l][c].visibilidade = 1;
       //lados
