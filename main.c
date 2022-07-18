@@ -10,6 +10,11 @@ int main(){
     matriz m;
     gerar_Matriz(&m);
     colocar_bombas(&m);
+    for(int i = 0; i < 10;i++){
+        for(int j = 0; j < 20;j++)
+            printf("%d ",m.mat[i][j].caractere);
+        printf("\n");
+    }
     tela_inicial(&m);
     return 0;
 }
