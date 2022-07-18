@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "matriz.h"
 #include "funcs.h"
 
@@ -80,9 +81,11 @@ int abre_vizinho(int l, int c, matriz *m){
   }
 }
 
-int abre_celula(matriz m, matriz m2){
+int abre_celula(matriz m){
   int count = 0;
   do{
+    int l,c;
+    char c2;
     printf("  ------------------------------------------\n");
     printf("    a b c d e f g h i j k l m n o p q r s t\n");
     printf("  ------------------------------------------\n");
@@ -95,15 +98,19 @@ int abre_celula(matriz m, matriz m2){
       }
       printf("| ");
       for(int j = 0; j < 20;j++)
-          printf("%c ",m2.mat[i][j].caractere);
+        if(m.mat[i][j].caractere == '#'){
+          printf("%c ",'*');
+        }
+        else{
+          printf("%c ",m.mat[i][j].caractere);
+        }  
       printf("|\n");
     }
     printf("  ------------------------------------------\n");
-      int l,c;
-      char c2;
-      scanf("%d %c",&l,&c2);
-      l = ordena_menos_um(l);
-      c = troca(c2);
+    scanf("%d %c",&l,&c2);
+    tolower(c2);
+    c = troca(c2);
+    l = trata_linha(l,m);
       if(m.mat[l][c].caractere == '#'){
         printf("Game Over");
         break;
@@ -113,7 +120,7 @@ int abre_celula(matriz m, matriz m2){
         char y;
         x = verifica_vizinho(l,c,&m);
         y = convert_char(x);
-        m2.mat[l][c].caractere = y;
+        m.mat[l][c].caractere = y;
       }
       count++;
     }while(count != 160);
