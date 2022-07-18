@@ -106,9 +106,9 @@ void imprimir_matriz(matriz m){
           printf("* ");
       }else{
         if(j == 0)
-          printf("%.2d %.2c ",i+1,m.mat[i][j].caractere);
+          printf("%.2d %c ",i+1,m.mat[i][j].caractere);
         else
-          printf("%.2c ",m.mat[i][j].caractere);
+          printf("%c ",m.mat[i][j].caractere);
       }
     }
     printf("|\n");
