@@ -101,12 +101,12 @@ void imprimir_matriz(matriz m){
     for(int j = 0; j < 20; j++){
       if(m.mat[i][j].caractere == '#'){
         if(j == 0)
-          printf("%.2d * ",j+1);
+          printf("%.2d * ",i+1);
         else
           printf("* ");
       }else{
         if(j == 0)
-          printf("%.2d %.2d ",j+1,m.mat[i][j].caractere);
+          printf("%.2d %.2d ",i+1,m.mat[i][j].caractere);
         else
           printf("%.2d ",m.mat[i][j].caractere);
       }
