@@ -11,7 +11,7 @@ void gerar_Matriz(matriz *m){
 
     for(int i = 0; i < 10;i++){
         for(int j = 0;j < 20;j++){
-            m->mat[i][j].visibilidade = 1;
+            m->mat[i][j].visibilidade = 0;
             m->mat[i][j].bombas_perto = 0;
             m->mat[i][j].caractere =  '*';
         }
@@ -62,65 +62,80 @@ int verifica_vizinho(int l, int c, matriz *m){
 }
 
 int verifica_aberto(int l, int c, matriz *m){
-  return (coordenada_valida(l,c) && (m->mat[l][c].visibilidade == 0));
+  return (coordenada_valida(l,c) && (m->mat[l][c].visibilidade));
 }
 
-//Em produção
-int abre_vizinho(int l, int c, matriz *m){
-  int x;
-  x = verifica_vizinho(l,c,m);
-  for(int i = l-1; i < l+1; i++){
-    for(int j = c-1; j < c+1; j++){
-      if(coordenada_valida(i,j)){
-        m->mat[i][j].caractere = convert_char(x);
-        if(verifica_vizinho(i,j,m) != 0){
-          return abre_vizinho(i,j,m);
-        }
-      }  
+//Tá pronto
+void abre_vizinho(int l, int c, matriz *m){
+  if(!coordenada_valida(l,c) || m->mat[l][c].caractere == '#'){
+    return;
+  }
+  else if(verifica_vizinho(l,c,&m) != 0){
+    m->mat[l][c].caractere = convert_char(m->mat[l][c].bombas_perto);
+    m->mat[l][c].visibilidade = 1;
+  }
+  else{
+    if(!verifica_aberto(l,c,&m)){
+      m->mat[l][c].caractere = ' ';
+      m->mat[l][c].visibilidade = 1;
+      //lados
+      abre_vizinho(l,c+1,&m);
+      abre_vizinho(l,c-1,&m);
+      abre_vizinho(l+1,c,&m);
+      abre_vizinho(l-1,c,&m);
+      //diagonais
+      abre_vizinho(l-1,c+1,&m);
+      abre_vizinho(l-1,c-1,&m);
+      abre_vizinho(l+1,c+1,&m);
+      abre_vizinho(l+1,c-1,&m);
     }
   }
 }
 
-int abre_celula(matriz m){
+void imprimir_matriz(matriz m){
+  printf("  ------------------------------------------\n");
+  printf("    a b c d e f g h i j k l m n o p q r s t\n");
+  printf("  ------------------------------------------\n");
+  for(int i = 0; i < 10; i++){
+    if(i + 1 != 10){
+      printf("0%d",i+1);
+    }
+    else{
+      printf("%d",i+1);
+    }
+    printf("| ");
+    for(int j = 0; j < 20;j++)
+      if(m->mat[i][j].caractere == '#'){
+        printf("%c ",'*');
+      }
+      else{
+        printf("%c ",m->mat[i][j].caractere);
+      }  
+    printf("|\n");
+    }
+  printf("  ------------------------------------------\n");
+}
+
+int abre_celula(matriz *m){
   int count = 0;
   do{
     int l,c;
     char c2;
-    printf("  ------------------------------------------\n");
-    printf("    a b c d e f g h i j k l m n o p q r s t\n");
-    printf("  ------------------------------------------\n");
-    for(int i = 0; i < 10; i++){
-      if(i + 1 != 10){
-        printf("0%d",i+1);
-      }
-      else{
-        printf("%d",i+1);
-      }
-      printf("| ");
-      for(int j = 0; j < 20;j++)
-        if(m.mat[i][j].caractere == '#'){
-          printf("%c ",'*');
-        }
-        else{
-          printf("%c ",m.mat[i][j].caractere);
-        }  
-      printf("|\n");
-    }
-    printf("  ------------------------------------------\n");
+    imprimir_matriz(m);
     scanf("%d %c",&l,&c2);
     tolower(c2);
     c = troca(c2);
     l = trata_linha(l,m);
+    m->mat[l][c].visibilidade = 1;
       if(m.mat[l][c].caractere == '#'){
         printf("Game Over");
         break;
       }
       else{
         int x;
-        char y;
         x = verifica_vizinho(l,c,&m);
-        y = convert_char(x);
-        m.mat[l][c].caractere = y;
+        abre_vizinho(l,c,&m);
+        m->mat[l][c].caractere = convert_char(x);
       }
       count++;
     }while(count != 160);
