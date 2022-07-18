@@ -56,15 +56,13 @@ void como_jogar(matriz m){
 }
 
 void tela_inicial(matriz *m){
- int escolha;   
+  int escolha;   
   printf("---------------------------------------------------------\n");
   printf("                      CAMPO MINADO                       \n");
   printf("---------------------------------------------------------\n\n\n");
-
   printf("1 - jogar \n");
   printf("2 - como jogar \n");
   printf("3 - modo autônomo \n");
-
   printf("Digite um número de 1 a 3 \n");
   scanf(" %d",&escolha);
 

@@ -67,7 +67,7 @@ int verifica_aberto(int l, int c, matriz *m){
 
 //Tá pronto
 void abre_vizinho(int l, int c, matriz *m){
-  if(!coordenada_valida(l,c) || m->mat[l][c].caractere == '#'){
+  if(!coordenada_valida(l,c)){
     return;
   }
   else if(verifica_vizinho(l,c,m) != 0){
@@ -126,7 +126,6 @@ int abre_celula(matriz *m){
     tolower(c2);
     c = troca(c2);
     l = trata_linha(l);
-    m->mat[l][c].visibilidade = 1;
     if(m->mat[l][c].caractere == '#'){
       fim_de_jogo();
       break;
@@ -135,7 +134,6 @@ int abre_celula(matriz *m){
       int x;
       x = verifica_vizinho(l,c,m);
       abre_vizinho(l,c,m);
-      m->mat[l][c].caractere = convert_char(x);
     }
     count++;
     }while(count != 160);
