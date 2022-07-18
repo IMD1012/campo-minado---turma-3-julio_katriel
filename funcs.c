@@ -39,14 +39,13 @@ char convert_char(int n){
 
 void como_jogar(matriz m, matriz m2){
   int escolha;
-  printf("Digite uma letra no intervalor de A a J\n");
-  printf("Digite um número no intervalor de 1 à 20\n");
+  printf("Digite um número no intervalor de 1 à 10\n");
+  printf("Digite uma letra no intervalor de A a T\n");
   printf("Exemplos: a7,j9 e e13\n");
   printf("Para ver o tempo de jogo digite: t\n");
   printf("Para pedir ajudar do computador digite: h\n");
   printf("Digite 1 para jogar \n");
-  scanf("%d",&escolha);
-  printf("\n");
+  scanf("%d\n",&escolha);
   if(escolha == 1){
     abre_celula(m,m2);
   }
