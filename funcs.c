@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
-#include "matriz.h"
+#include "funcs.h"
 
 int aleatorio(int tam){
   return (rand() % tam);
