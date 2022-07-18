@@ -101,6 +101,51 @@ void abrir_arredor(int l, int c, matriz *m){
   }
 }
 
+void como_jogar(matriz m){
+  int escolha;
+  printf("Digite um número no intervalor de 1 à 10\n");
+  printf("Digite uma letra no intervalor de A a T\n");
+  printf("Exemplos: a7, j9 e e13\n");
+  printf("Para ver o tempo de jogo digite: t\n");
+  printf("Para pedir ajudar do computador digite: h\n");
+  printf("Digite 1 para jogar \n");
+  scanf("%d\n",&escolha);
+  if(escolha == 1){
+    jogo(&m);
+  }
+}
+
+void tela_inicial(matriz *m){
+  int escolha;   
+  printf("---------------------------------------------------------\n");
+  printf("                      CAMPO MINADO                       \n");
+  printf("---------------------------------------------------------\n\n\n");
+  printf("1 - jogar \n");
+  printf("2 - como jogar \n");
+  printf("3 - modo autônomo \n");
+  printf("Digite um número de 1 a 3 \n");
+  scanf(" %d",&escolha);
+
+  do{
+    if(escolha == 1){
+      jogo(m);
+    }
+    else if(escolha == 2){
+      como_jogar(*m);
+    }
+    else if(escolha == 3){
+      printf("Função Indisponível \n");
+      printf("Digite novamente \n");
+      scanf(" %d",&escolha);
+    }
+    else{
+      printf("Número inválido \n");
+      printf("Digite novamente \n");
+      scanf(" %d",&escolha);
+    }
+  }while(escolha > 2);
+}
+
 void imprimir_matriz(matriz m){
   printf("  ------------------------------------------\n");
   printf("    A B C D E F G H I J K L M N O P Q R S T\n");
