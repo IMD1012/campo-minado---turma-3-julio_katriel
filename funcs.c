@@ -3,13 +3,6 @@
 #include <ctype.h>
 #include "matriz.h"
 
-
-int trata_linha(char l1){
-  int l2;
-  l2 = l1 - 1;
-  return l2;
-}
-
 int aleatorio(int tam){
   return (rand() % tam);
 }
@@ -18,7 +11,7 @@ int coordenada_valida(int l, int c){
   return ((l >= 0 && l < 10) && (c >= 0 && c < 20));
 }
 
-int troca(char letra){
+int convert_char(char letra){
   
   if(letra < 117)
     return letra - 97;
@@ -26,7 +19,7 @@ int troca(char letra){
     return -1;
 }
 
-char convert_char(int n){
+char convert_int(int n){
   switch(n){
     case 0: return '0';
     case 1: return '1';
@@ -45,13 +38,13 @@ void como_jogar(matriz m){
   int escolha;
   printf("Digite um número no intervalor de 1 à 10\n");
   printf("Digite uma letra no intervalor de A a T\n");
-  printf("Exemplos: a7,j9 e e13\n");
+  printf("Exemplos: a7, j9 e e13\n");
   printf("Para ver o tempo de jogo digite: t\n");
   printf("Para pedir ajudar do computador digite: h\n");
   printf("Digite 1 para jogar \n");
   scanf("%d\n",&escolha);
   if(escolha == 1){
-    abre_celula(&m);
+    jogo(&m);
   }
 }
 
@@ -68,7 +61,7 @@ void tela_inicial(matriz *m){
 
   do{
     if(escolha == 1){
-      abre_celula(m);
+      jogo(m);
     }
     else if(escolha == 2){
       como_jogar(*m);
@@ -86,16 +79,15 @@ void tela_inicial(matriz *m){
   }while(escolha > 2);
 }
 
-void Time(){
-  
-}
-
-void help(){
-  
-}
-
 void fim_de_jogo(){
     printf("---------------------------------------------------------\n");
     printf("                        GAME OVER                        \n");
     printf("---------------------------------------------------------\n");
+}
+
+void entrada(int *l,int *c){
+  char c2;
+  scanf("%d %c",l,&c2);
+  *c = tolower(c2);
+  *l = *l - 1;
 }

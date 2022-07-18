@@ -4,7 +4,7 @@
 #include "matriz.h"
 #include "funcs.h"
 
-void gerar_Matriz(matriz *m){
+void gerar_matriz(matriz *m){
     m->mat = malloc(sizeof(celula*)*10);
     for(int i = 0; i < 20; i++)
         m->mat[i] = malloc(sizeof(celula)*20);
@@ -31,7 +31,17 @@ void colocar_bombas(matriz *m){
     }
 }
 
-int verifica_vizinho(int l, int c, matriz *m){
+int contador_visivel(matriz m){
+  int count = 0;
+  for(int i = 0; i < 10;i++){
+    for(int j = 0; j < 20; j++)
+      count += m.mat[i][j].visibilidade;
+  }
+
+  return count;
+}
+
+int verificar_arredor(int l, int c, matriz *m){
 
   if(coordenada_valida(l-1,c-1) && m->mat[l-1][c-1].caractere == '#'){
     m->mat[l][c].bombas_perto++;
@@ -64,14 +74,13 @@ int verifica_vizinho(int l, int c, matriz *m){
 int verifica_aberto(int l, int c, matriz *m){
   return (coordenada_valida(l,c) && (m->mat[l][c].visibilidade));
 }
-
 //Tá pronto
-void abre_vizinho(int l, int c, matriz *m){
+void abrir_arredor(int l, int c, matriz *m){
   if(!coordenada_valida(l,c)){
     return;
   }
-  else if(verifica_vizinho(l,c,m) != 0){
-    m->mat[l][c].caractere = convert_char(m->mat[l][c].bombas_perto);
+  else if(verificar_arredor(l,c,m) != 0){
+    m->mat[l][c].caractere = convert_int(m->mat[l][c].bombas_perto);
     m->mat[l][c].visibilidade = 1;
   }
   else{
@@ -79,15 +88,15 @@ void abre_vizinho(int l, int c, matriz *m){
       m->mat[l][c].caractere = ' ';
       m->mat[l][c].visibilidade = 1;
       //lados
-      abre_vizinho(l,c+1,m);
-      abre_vizinho(l,c-1,m);
-      abre_vizinho(l+1,c,m);
-      abre_vizinho(l-1,c,m);
+      abrir_arredor(l,c+1,m);
+      abrir_arredor(l,c-1,m);
+      abrir_arredor(l+1,c,m);
+      abrir_arredor(l-1,c,m);
       //diagonais
-      abre_vizinho(l-1,c+1,m);
-      abre_vizinho(l-1,c-1,m);
-      abre_vizinho(l+1,c+1,m);
-      abre_vizinho(l+1,c-1,m);
+      abrir_arredor(l-1,c+1,m);
+      abrir_arredor(l-1,c-1,m);
+      abrir_arredor(l+1,c+1,m);
+      abrir_arredor(l+1,c-1,m);
     }
   }
 }
@@ -116,25 +125,16 @@ void imprimir_matriz(matriz m){
   printf("  ------------------------------------------\n");
 }
 
-int abre_celula(matriz *m){
-  int count = 0;
+int jogo(matriz *m){
   do{
     int l,c;
-    char c2;
     imprimir_matriz(*m);
-    scanf("%d %c",&l,&c2);
-    tolower(c2);
-    c = troca(c2);
-    l = trata_linha(l);
+    entrada(&l,&c);
     if(m->mat[l][c].caractere == '#'){
       fim_de_jogo();
       break;
     }
-    else{
-      int x;
-      x = verifica_vizinho(l,c,m);
-      abre_vizinho(l,c,m);
-    }
-    count++;
-    }while(count != 160);
+    else
+      abrir_arredor(l,c,m);
+  }while(contador_visivel(*m));
 }

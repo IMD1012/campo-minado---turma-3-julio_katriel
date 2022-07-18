@@ -8,7 +8,7 @@
 int main(){
     srand(time(NULL));
     matriz m;
-    gerar_Matriz(&m);
+    gerar_matriz(&m);
     colocar_bombas(&m);
     for(int i = 0; i < 10;i++){
         for(int j = 0; j < 20;j++)

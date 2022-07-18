@@ -11,9 +11,10 @@ typedef struct{
     celula **mat;
 }matriz;
 
-void gerar_Matriz(matriz *m);
+void gerar_matriz(matriz *m);
 void colocar_bombas(matriz *m);
-int verifica_vizinho(int l, int c, matriz *m);
-int abre_celula(matriz *m);
+int contador_visivel(matriz m)
+int verificar_arredor(int l, int c, matriz *m);
+int jogo(matriz *m);
 int aleatorio(int tam);
 #endif
