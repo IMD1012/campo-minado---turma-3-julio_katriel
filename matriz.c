@@ -18,13 +18,13 @@ void gerar_matriz(matriz *m){
     }
 }
 
-void colocar_bombas(int l, int c, matriz *m){
+void colocar_bombas(matriz *m){
     int count = 0,linha,coluna;
 
     while(count < 40){
         linha =  aleatorio(10);
         coluna = aleatorio(20);
-        if(m->mat[linha][coluna].caractere == '*' && linha != l && coluna != c){
+        if(m->mat[linha][coluna].caractere == '*'){
             count++;
             m->mat[linha][coluna].caractere = '#';
         }
@@ -181,9 +181,6 @@ int jogo(matriz *m){
     c2 = tolower(c2);
     l = l -1;
     c = convert_char(c2);
-    if(contador_visivel(*m) == 0){
-      colocar_bombas(l,c,m);
-    }
     if(m->mat[l][c].visibilidade == 0){
       if(m->mat[l][c].caractere == '#'){
         fim_de_jogo();
