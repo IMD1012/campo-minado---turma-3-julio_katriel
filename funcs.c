@@ -39,10 +39,3 @@ void fim_de_jogo(){
     printf("                        GAME OVER                        \n");
     printf("---------------------------------------------------------\n");
 }
-
-void entrada(int *l,int *c){
-  char c2;
-  scanf("%d %c",l,&c2);
-  *c = tolower(c2);
-  *l = *l - 1;
-}
