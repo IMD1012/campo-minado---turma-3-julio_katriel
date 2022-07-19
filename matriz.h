@@ -17,6 +17,6 @@ int contador_visivel(matriz m);
 void como_jogar(matriz m);
 void tela_inicial(matriz *m);
 void imprimir_matriz(matriz m);
-int verificar_arredor(int l, int c, matriz *m);
+int verificar_arredor(matriz *m);
 int jogo(matriz *m);
 #endif
