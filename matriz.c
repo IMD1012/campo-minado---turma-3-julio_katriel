@@ -171,15 +171,17 @@ void imprimir_matriz(matriz m){
 }
 
 int jogo(matriz *m){
+  int l,c;
+  imprimir_matriz(*m);
   do{
-    int l,c;
-    imprimir_matriz(*m);
     entrada(&l,&c);
     if(m->mat[l][c].caractere == '#'){
       fim_de_jogo();
       break;
     }
-    else
+    else{
       abrir_arredor(l,c,m);
-  }while(contador_visivel(*m));
+      imprimir_matriz(*m);
+    }
+  }while(contador_visivel(*m) < 160);
 }
