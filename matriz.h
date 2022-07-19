@@ -19,5 +19,4 @@ void tela_inicial(matriz *m);
 void imprimir_matriz(matriz m);
 int verificar_arredor(int l, int c, matriz *m);
 int jogo(matriz *m);
-void trata_coluna(char c, matriz m);
 #endif
