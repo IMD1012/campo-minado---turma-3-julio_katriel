@@ -9,12 +9,6 @@ int main(){
     srand(time(NULL));
     matriz m;
     gerar_matriz(&m);
-    colocar_bombas(&m);
-    for(int i = 0; i < 10;i++){
-        for(int j = 0; j < 20;j++)
-            printf("%c ",m.mat[i][j].caractere);
-        printf("\n");
-    }
     tela_inicial(&m);
     return 0;
 }
