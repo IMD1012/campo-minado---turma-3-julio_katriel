@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 #include "matriz.h"
 #include "funcs.h"
 
@@ -102,15 +103,27 @@ void abrir_arredor(int l, int c, matriz *m){
   }
 }
 
-void como_jogar(matriz m){
-  int escolha;
+int entrada_usuario(char str[10]){//modificado
+  getz(10,str);
+  if(strlen(str) == 1 && isalpha(str[0])){
+    str[0] = tolower(str[0]);
+    switch(str[0]){
+      case 't': return 1;
+      case 'h': return 2;
+      case 'j': return 3;
+    }
+  }else
+    return -1;
+}
+
+void como_jogar(matriz m){// modificado
+  char str[10];
   printf("Digite um número de 1 à 10 e uma letra de A à T\n");
   printf("Exemplos: 7b, 9j e 10t\n\n");
-  printf("Para ver o tempo de jogo digite: t\n");
-  printf("Para pedir ajudar do computador digite: h\n\n");
-  printf("Digite 1 para jogar \n");
-  scanf("%d",&escolha);
-  if(escolha == 1)
+  printf("Para ver o tempo de jogo digite: T\n");
+  printf("Para pedir ajudar do computador digite: H\n\n");
+  printf("Digite J para voltar\n");
+  if(entrada_usuario(str) == 3)
     tela_inicial(&m);
   else
     como_jogar(m);
