@@ -9,7 +9,6 @@ int main(){
     srand(time(NULL));
     matriz m;
     gerar_matriz(&m);
-    colocar_bombas(&m);
     tela_inicial(&m);
     return 0;
 }
