@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
 #include "funcs.h"
 
@@ -54,7 +55,7 @@ int entrada_usuario(){//modificado 2
       case 'h': return 6;
       default: return -1;
     }
-  }else if(strlen(str) == 1 && isnum(str[0])){
+  }else if(strlen(str) == 1 && isalnum(str[0])){
     sscanf(str,"%d",&num);
     return num;
   }else
