@@ -6,6 +6,7 @@ int aleatorio(int tam);
 char convert_int(int n);
 int coordenada_valida(int l, int c);
 int convert_char(char letra);
+void ganha_jogo();
 void fim_de_jogo();
 
 #endif
