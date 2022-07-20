@@ -10,12 +10,11 @@ time_t tempo_de_jogo();
 
 int main(){
     time_t inicio;
-    inicio = time(NULL);
     srand(time(NULL));
     matriz m;
     gerar_matriz(&m);
-    colocar_bombas(&m);
-    tela_inicial(&m);
+    int e = entrada_usuario();
+    printf("%d\n", e);
 
     return 0;
 }
