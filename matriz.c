@@ -117,6 +117,17 @@ void como_jogar(matriz m){
   }
 }
 
+int ler_entrada(){
+  int escolha = 0;
+  scanf("%d",&escolha);
+  switch(escolha){
+    case 1: return 1;
+    case 2: return 2;
+    case 3: return 3;
+    default: return 0;
+  }
+}
+
 void tela_inicial(matriz *m){
   int escolha;   
   printf("---------------------------------------------------------\n");
@@ -191,5 +202,5 @@ int jogo(matriz *m){
         imprimir_matriz(*m);
       }
     }
-  }while(contador_visivel(*m) < 160);
+  }while(contador_visivel(*m) != 160);
 }
