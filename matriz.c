@@ -113,7 +113,7 @@ void como_jogar(matriz m){
   if(escolha == 1)
     tela_inicial(&m);
   else
-    como_jogar(&m);
+    como_jogar(m);
 }
 
 void tela_inicial(matriz *m){
