@@ -104,16 +104,16 @@ void abrir_arredor(int l, int c, matriz *m){
 
 void como_jogar(matriz m){
   int escolha;
-  printf("Digite um número no intervalor de 1 à 10\n");
-  printf("Digite uma letra no intervalor de A a T\n");
-  printf("Exemplos: 7b, 9j e 10t\n");
+  printf("Digite um número de 1 à 10 e uma letra de A à T\n");
+  printf("Exemplos: 7b, 9j e 10t\n\n");
   printf("Para ver o tempo de jogo digite: t\n");
-  printf("Para pedir ajudar do computador digite: h\n");
+  printf("Para pedir ajudar do computador digite: h\n\n");
   printf("Digite 1 para jogar \n");
   scanf("%d",&escolha);
-  if(escolha == 1){
-    jogo(&m);
-  }
+  if(escolha == 1)
+    tela_inicial(&m);
+  else
+    como_jogar(&m);
 }
 
 void tela_inicial(matriz *m){
