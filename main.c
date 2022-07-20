@@ -13,8 +13,7 @@ int main(){
     srand(time(NULL));
     matriz m;
     gerar_matriz(&m);
-    int e = entrada_usuario();
-    printf("%d\n", e);
+    tela_inicial();
 
     return 0;
 }

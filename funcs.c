@@ -49,12 +49,10 @@ int entrada_usuario(){//modificado 2
   int num;
   if(strlen(str) == 1 && isalpha(str[0])){
     str[0] = tolower(str[0]);
-    switch(str[0]){
-      case 'v': return 4;
-      case 't': return 5;
-      case 'h': return 6;
-      default: return -1;
-    }
+    if(str[0] == 'v')
+      return 4;
+    else
+      return -1;
   }else if(strlen(str) == 1 && isalnum(str[0])){
     sscanf(str,"%d",&num);
     return num;
@@ -94,6 +92,8 @@ int tela_inicial(){// modificado 2
       printf("Função Indisponível \n");
       printf("Digite novamente \n");
       escolha = entrada_usuario();
+    }else if(escolha == 4){
+      menu();
     }
     else{
       printf("Entrada ínvalida\n");
