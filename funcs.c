@@ -7,6 +7,14 @@ int aleatorio(int tam){
   return (rand() % tam);
 }
 
+void getz(int n,char st[n]){
+  fgets(st,n,stdin);
+  while(st[0] == '\n')
+    fgets(st,n,stdin);
+  if(st[strlen(st)-1] == '\n')
+    st[strlen(st)-1] = '\0';
+}
+
 int coordenada_valida(int l, int c){
   return ((l >= 0 && l < 10) && (c >= 0 && c < 20));
 }
