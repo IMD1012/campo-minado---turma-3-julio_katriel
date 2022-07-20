@@ -18,13 +18,13 @@ void gerar_matriz(matriz *m){
     }
 }
 
-void colocar_bombas(matriz *m){
+void colocar_bombas(int l, int c, matriz *m){
     int count = 0,linha,coluna;
 
     while(count < 40){
         linha =  aleatorio(10);
         coluna = aleatorio(20);
-        if(m->mat[linha][coluna].caractere == '*'){
+        if(m->mat[linha][coluna].caractere == '*' && l != linha && c != coluna){
             count++;
             m->mat[linha][coluna].caractere = '#';
         }
@@ -37,7 +37,6 @@ int contador_visivel(matriz m){
     for(int j = 0; j < 20; j++)
       count += m.mat[i][j].visibilidade;
   }
-
   return count;
 }
 
@@ -74,7 +73,7 @@ int verificar_arredor(int l, int c, matriz *m){
 int verifica_aberto(int l, int c, matriz *m){
   return (coordenada_valida(l,c) && (m->mat[l][c].visibilidade));
 }
-//Tá pronto
+
 void abrir_arredor(int l, int c, matriz *m){
   if(!coordenada_valida(l,c)){
     return;
@@ -107,11 +106,11 @@ void como_jogar(matriz m){
   int escolha;
   printf("Digite um número no intervalor de 1 à 10\n");
   printf("Digite uma letra no intervalor de A a T\n");
-  printf("Exemplos: a7, j9 e e13\n");
+  printf("Exemplos: 7b, 9j e 10t\n");
   printf("Para ver o tempo de jogo digite: t\n");
   printf("Para pedir ajudar do computador digite: h\n");
   printf("Digite 1 para jogar \n");
-  scanf("%d\n",&escolha);
+  scanf("%d",&escolha);
   if(escolha == 1){
     jogo(&m);
   }
@@ -131,6 +130,7 @@ void tela_inicial(matriz *m){
   do{
     if(escolha == 1){
       jogo(m);
+      break;
     }
     else if(escolha == 2){
       como_jogar(*m);
@@ -145,7 +145,7 @@ void tela_inicial(matriz *m){
       printf("Digite novamente \n");
       scanf(" %d",&escolha);
     }
-  }while(escolha > 2);
+  }while(escolha != 1 || escolha != 2);
 }
 
 void imprimir_matriz(matriz m){
@@ -173,23 +173,39 @@ void imprimir_matriz(matriz m){
 }
 
 int jogo(matriz *m){
-  int l,c;
-  char c2;
-  imprimir_matriz(*m);
-  do{
-    scanf("%d %c",&l,&c2);
-    c2 = tolower(c2);
-    l = l -1;
-    c = convert_char(c2);
-    if(m->mat[l][c].visibilidade == 0){
+  int l,c,count =0;
+  char c2,escolha;
+  while(count <= 160){
+    printf("Deseja jogar(j), ver o tempo(t) ou pedir ajuda(h)? \n");
+    scanf(" %c",&escolha);
+    escolha = tolower(escolha);
+    if(escolha == 'j'){
+      imprimir_matriz(*m);
+      scanf("%d %c",&l,&c2);
+      c2 = tolower(c2);
+      l = l -1;
+      c = convert_char(c2);
+      if(count == 0){
+        colocar_bombas(l,c,m);
+      }
       if(m->mat[l][c].caractere == '#'){
         fim_de_jogo();
-        break;
+        count = 161;
       }
-      else{
+      else if(m->mat[l][c].visibilidade == 0){
         abrir_arredor(l,c,m);
         imprimir_matriz(*m);
+        count = contador_visivel(*m);
+        if(contador_visivel(*m) == 160){
+          ganha_jogo();
+        }
       }
     }
-  }while(contador_visivel(*m) < 160);
+    else if(escolha == 't'){
+      printf("Função indisponível \n");
+    }
+    else if(escolha == 'h'){
+      printf("Função indisponível \n");
+    }
+  }
 }
