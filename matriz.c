@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <time.h>
 #include "matriz.h"
 #include "funcs.h"
 
@@ -127,8 +128,10 @@ void imprimir_matriz(matriz m){
 }
 
 int jogo(matriz *m){
+  time_t inicio,tempo;
   int l,c,count =0;
   char c2,escolha;
+
   while(count < 160){
     printf("Deseja jogar(j), ver o tempo(t) ou pedir ajuda(h)? \n");
     scanf(" %c",&escolha);
@@ -140,6 +143,7 @@ int jogo(matriz *m){
       l = l -1;
       c = convert_char(c2);
       if(count == 0){
+        inicio = time(NULL);
         colocar_bombas(l,c,m);
       }
       if(m->mat[l][c].caractere == '#'){
@@ -156,10 +160,38 @@ int jogo(matriz *m){
       }
     }
     else if(escolha == 't'){
-      printf("Função indisponível \n");
+      tempo = tempo_de_jogo();
+      printf("Tempo em segundos: %lds\n",tempo-inicio);
     }
     else if(escolha == 'h'){
-      printf("Função indisponível \n");
+      printf("digite uma coordenada \n");
+      scanf("%d %d",&l,&c);
+      ajudar(l,c,*m);
     }
   }
+}
+
+void ajudar(int l, int c, matriz m){
+  double x = 0;
+  int quantidade_celulas = 0;
+  int result;
+
+  for(int i = l-1; i <= l+1; i++){
+    for(int j = c-1; j <= c+1; j++){
+      if(coordenada_valida(i,j))
+        quantidade_celulas++;
+    }
+  }
+
+  for(int i = l-1; i <= l+1; i++){
+    for(int j = c-1; j <= c+1; j++){
+      if(coordenada_valida(i,j) && m.mat[i][j].caractere == '#' && (i != l &&  j !=c))
+        x++;
+    }
+  }
+  
+  result = 80/(quantidade_celulas-x);
+  result = result *2;
+
+  printf("%d %% de chance de haver uma bomba nos espaços\n",result);
 }
