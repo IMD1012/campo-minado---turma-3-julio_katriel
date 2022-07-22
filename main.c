@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include "matriz.h"
 #include "funcs.h"
+#include "computador.h"
 
 time_t tempo_de_jogo();
 
