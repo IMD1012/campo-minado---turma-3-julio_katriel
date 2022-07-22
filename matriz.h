@@ -18,4 +18,7 @@ int verificar_arredor(int l, int c, matriz *m);
 void abrir_arredor(int l, int c, matriz *m);
 void imprimir_matriz(matriz m);
 int jogo(matriz *m);
+void ajudar(int l, int c, matriz m);
+int jogada(int *l, int *c, matriz m);
+
 #endif
