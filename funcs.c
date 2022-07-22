@@ -43,7 +43,7 @@ char convert_int(int n){
   }
 }
 
-int entrada_usuario(){//modificado 2
+int entrada_usuario(){//modificado 3
   char str[10];
   getz(10,str);
   int num;
@@ -78,7 +78,7 @@ void menu(){//criado 1
   printf("Digite um número de 1 a 3 \n");
 }
 
-int tela_inicial(){// modificado 2
+int tela_inicial(){// modificado 3
   int escolha;
   menu();
   escolha = entrada_usuario();
