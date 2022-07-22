@@ -93,7 +93,7 @@ int tela_inicial(){// modificado 3
       printf("Digite novamente \n");
       escolha = entrada_usuario();
     }else if(escolha == 4){
-      menu();
+      tela_inicial();
     }
     else{
       printf("Entrada ínvalida\n");
