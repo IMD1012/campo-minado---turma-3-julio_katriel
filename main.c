@@ -14,9 +14,11 @@ int main(){
     srand(time(NULL));
     matriz m;
     gerar_matriz(&m);
-    tela_inicial();
-    jogo(&m);
-    
+    if(tela_inicial() == 1)
+        jogo(&m);
+    else
+        computador_joga(&m);
+
     return 0;
 }
 time_t tempo_de_jogo(){
