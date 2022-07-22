@@ -1,11 +1,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include <ctype.h>
 #include "funcs.h"
 
 int aleatorio(int tam){
   return (rand() % tam);
+}
+
+time_t tempo_de_jogo(){
+    return time(NULL);
 }
 
 void getz(int n,char st[n]){
@@ -15,6 +20,8 @@ void getz(int n,char st[n]){
   if(st[strlen(st)-1] == '\n')
     st[strlen(st)-1] = '\0';
 }
+
+
 
 int coordenada_valida(int l, int c){
   return ((l >= 0 && l < 10) && (c >= 0 && c < 20));
@@ -88,7 +95,8 @@ int tela_inicial(){// modificado 3
       como_jogar();
       escolha = entrada_usuario();
     }else if(escolha == 4){
-      tela_inicial();
+      menu();
+      escolha = entrada_usuario();
     }
     else{
       printf("Entrada ínvalida\n");
