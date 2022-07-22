@@ -83,14 +83,9 @@ int tela_inicial(){// modificado 3
   menu();
   escolha = entrada_usuario();
 
-  while(escolha != 1){
+  while(escolha != 1 && escolha != 3){
     if(escolha == 2){
       como_jogar();
-      escolha = entrada_usuario();
-    }
-    else if(escolha == 3){
-      printf("Função Indisponível \n");
-      printf("Digite novamente \n");
       escolha = entrada_usuario();
     }else if(escolha == 4){
       tela_inicial();
@@ -102,7 +97,7 @@ int tela_inicial(){// modificado 3
     }
   }
 
-  return 1;
+  return escolha;
 }
 
 void ganha_jogo(){
