@@ -14,7 +14,8 @@ int main(){
     matriz m;
     gerar_matriz(&m);
     tela_inicial();
-
+    jogo(&m);
+    
     return 0;
 }
 time_t tempo_de_jogo(){
