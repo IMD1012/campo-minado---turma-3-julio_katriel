@@ -21,6 +21,3 @@ int main(){
 
     return 0;
 }
-time_t tempo_de_jogo(){
-    return time(NULL);
-}
