@@ -129,7 +129,7 @@ void imprimir_matriz(matriz m){
 int jogo(matriz *m){
   int l,c,count =0;
   char c2,escolha;
-  while(count <= 160){
+  while(count < 160){
     printf("Deseja jogar(j), ver o tempo(t) ou pedir ajuda(h)? \n");
     scanf(" %c",&escolha);
     escolha = tolower(escolha);
